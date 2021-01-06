@@ -1,0 +1,19 @@
+
+
+
+
+
+
+
+EXAMPLE:
+
+CREATE TABLE `users` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `login` varchar(64) NOT NULL UNIQUE,
+  `email` varchar(255) NOT NULL UNIQUE,
+  `password` varchar(255) NOT NULL,
+  `phone_number` varchar(20) NULL,
+  `role` enum ('ROLE_USER','ROLE_ADMIN') NOT NULL
+) ENGINE='InnoDB' COLLATE 'utf8_general_ci';
+
+

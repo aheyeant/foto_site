@@ -1,0 +1,31 @@
+Server:
+http://wa.toad.cz/~skalkste
+    1) ssh skalkste@wa.toad.cz
+    2) password -> "webove aplikace"
+
+
+BD:
+http://wa.toad.cz/adminer/
+    1) MySQL
+    2) localhost
+    3) skalkste
+    4) "webove aplikace"
+    5) skalkste
+
+
+
+Login:
+skalkste
+
+Password:
+"webove aplikace"  // wothout ""
+
+Requirements:
+file:///home/aheyeant/Downloads/Telegram%20Desktop/Hodnocení%20ZWA%20-%20Nová%20hodnotící%20tabulka.pdf
+Story:
+file:///home/aheyeant/Downloads/Telegram%20Desktop/Pujcovna%20fotoaparatu.pdf
+
+
+Examples:
+https://manofmany.com/tech/cameras/10-best-traditional-film-cameras
+
