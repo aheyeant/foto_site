@@ -1,9 +1,9 @@
 <?php
     session_start();
 
-    if (isset($_POST["action"])) {
-        include "database/postControllers/loginPagePostController.php";
+    if (isset($_POST[RouterConstants::$POST_ACTION_NAME])) {
+        include "routers/postRouter.php";
         exit;
     }
 
-    include "content/controllers/loginPageController.php";
+    include "content/controllers/auth/signUpPageController.php";

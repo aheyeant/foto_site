@@ -1,0 +1,4 @@
+actions:
+        Sign up  (value="signup") POST  -> NO
+        Sign in  (value="signin") POST  -> NO
+        Sign out (value="signout") GET  -> NO

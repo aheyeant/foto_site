@@ -4,10 +4,10 @@ require_once "content/Template.php";
 
 //require_once "Content/Controllers/auth.php";
 
-$template = new Template("content/pages/tpl/");
-$title = "Login Page";
+$template = new Template("content/pages/tpl/auth/");
+$title = "Sign In";
 
 $template->set("title", $title);
 
 //------------------------------------------------
-$template->display("loginPage");
+$template->display("signInPage");

@@ -7,7 +7,7 @@
 <body>
     <form method="post">
         <label style="display: none">
-            <input name="action" value=" ">
+            <input name="post" value="signin">
         </label>
         <label>
             login:
