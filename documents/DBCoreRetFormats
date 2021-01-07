@@ -1,0 +1,11 @@
+DB return formats:
+    update, add:
+        { "success" => bool,
+            if (true) "object" => object,
+            if (false) "log" => log
+        }
+
+    delete:
+        { "success" => bool",
+          "log" => log
+        }

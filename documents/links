@@ -4,13 +4,21 @@ http://wa.toad.cz/~skalkste
     2) password -> "webove aplikace"
 
 
-BD:
+BD on wa.toad.cz:
 http://wa.toad.cz/adminer/
-    1) MySQL
-    2) localhost
-    3) skalkste
-    4) "webove aplikace"
-    5) skalkste
+    1) MySQL                // db type
+    2) localhost            // host
+    3) skalkste             // login
+    4) "webove aplikace"    // password
+    5) skalkste             // db name
+
+BD for test(before deploy need change login and password):
+    phpmyadmin -> 1234
+
+        var $db_login = "phpmyadmin";   // login
+        var $db_pass = "1234";          // password
+        var $db_name = "skalkste";      // db name
+        var $db_host = "localhost";     // host
 
 
 
