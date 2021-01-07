@@ -52,7 +52,7 @@ class UserTDO implements ITDO {
     public function isAdmin(): bool
     {
         if ($this->is_loaded) {
-            return $this->user_role == TDOConstants::$ROLE_ADMIN;
+            return $this->user_role == DBConstants::$ROLE_ADMIN;
         }
         return false;
     }
