@@ -1,9 +1,16 @@
 <?php
+    require_once "routers/RouterConstants.php";
+
     session_start();
 
     if (isset($_POST[RouterConstants::$POST_ACTION_NAME])) {
-        include "routers/postRouter.php";
+        include "routers/PostRouter.php";
         exit;
     }
 
-    include "content/controllers/auth/signUpPageController.php";
+    if (isset($_GET[RouterConstants::$GET_ACTION_NAME])) {
+        include "routers/GetRouter.php";
+        exit;
+    }
+
+    include "routers/PathRouter.php";

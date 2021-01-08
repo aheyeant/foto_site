@@ -6,12 +6,12 @@
 class MySQLDatabase
 {
     //windows
-    private $db_login = "root";         // login
-    private $db_pass = "Qwerty1234$";   // password
+    //private $db_login = "root";         // login
+    //private $db_pass = "Qwerty1234$";   // password
 
     //linux
-    //private $db_login = "phpmyadmin";   // login
-    //private $db_pass = "1234";          // password
+    private $db_login = "phpmyadmin";   // login
+    private $db_pass = "1234";          // password
 
     //server
     //private $db_login = "skalkste";           // login

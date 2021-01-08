@@ -102,8 +102,8 @@ class UserService implements IService {
      */
     public static function create($item): array
     {
-        $encryptedPassword = password_hash($item->user_password, PASSWORD_DEFAULT);
-        $item->user_password = $encryptedPassword;
+        $encryptedPassword = password_hash($item->password, PASSWORD_DEFAULT);
+        $item->password = $encryptedPassword;
         $db = new MySQLDatabase();
         $db->connect();
         $query = "INSERT INTO users (username, email, password, phone, role, verified, blocked) VALUES (:username, :email, :password, :phone, :role, :verified, :blocked)";

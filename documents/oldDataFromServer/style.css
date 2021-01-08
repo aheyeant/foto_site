@@ -1,0 +1,24 @@
+.napovidatko{
+    position: relative;
+    display: inline-block;
+    overflow-wrap: break-word;
+}
+
+.nasePolozky {
+    list-style-type: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding-left: 0;
+}
+
+.nasePolozky li{
+    padding: 0 5px 0 5px;
+    border: 1px solid chocolate;
+    cursor: pointer;
+}
+
+.nasePolozky li:hover{
+    background-color: bisque;
+}

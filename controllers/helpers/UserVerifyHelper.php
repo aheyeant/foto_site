@@ -1,5 +1,8 @@
 <?php
 
+require_once "database/DBConstants.php";
+require_once "HelpersConstants.php";
+require_once "database/model/User.php";
 
 class UserVerifyHelper {
 
@@ -25,11 +28,11 @@ class UserVerifyHelper {
     public static function createAndVerifyUser($username, $email, $password, $phone, $role, $verified, $blocked): array
     {
         $error_log = ["username" => null, "email" => null, "password" => null, "phone" => null, "other" => null];
+
         if (!self::verifyRole(VerifyHelper::removeWhitespaces($role))) {
             $error_log["other"] = "Server error.";
             return ["success" => false, "object" => $error_log];
         }
-
         $error = false;
 
         $username = VerifyHelper::removeWhitespacesAndTransformToLowerCase($username);
@@ -43,6 +46,8 @@ class UserVerifyHelper {
         if (!self::verifyEmail($email))       {$error = true; $error_log["email"] = "Incorrect email";}
         if (!self::verifyPassword($password)) {$error = true; $error_log["password"] = "Password must be at least " . HelpersConstants::$PASSWORD_MIN_LENGTH . " characters";}
         if (!self::verifyPhone($phone))       {$error = true; $error_log["phone"] = "Incorrect phone number";}
+        if ($verified) $verified = 1; else $verified = 0;
+        if ($blocked) $blocked = 1; else $blocked = 0;
 
         if ($error) {
             return ["success" => false, "object" => $error_log];
