@@ -40,25 +40,21 @@
                 FILTER CONTENT
             </div>
         </div>
-        <div class="items-content">
-            <div class="item">
-                item
+        <div class="post-layout">
+            <div class="post-items-layout">
+                <img class="post-image" src="/assets/camera.png">
+                <div class="item-text-content">
+                    <div>
+                        <span>Firm</span>
+                        <span>Model</span>
+                    </div>
+                    <span>Description</span>
+                    <span>Price</span>
+                    <span>Button</span>
+                    <span>User</span>
+                </div>
             </div>
-            <div class="item">
-                item
-            </div>
-            <div class="item">
-                item
-            </div>
-            <div class="item">
-                item
-            </div>
-            <div class="item">
-                item
-            </div>
-            <div class="item">
-                item
-            </div>
+            
 
         </div>
     </div>

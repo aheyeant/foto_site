@@ -18,6 +18,9 @@
     --account-content-text-color: rgb(0,0,0);
     --account-content-item-hover-color: #95989a;
 
+    --post-text-color: rgb(255,255,255);
+    --post-background-color: rgb(0,0,0);
+
     --default-color: rgb(1,1,1);
 }
 
@@ -153,19 +156,43 @@ body {
     min-height: 500px;
 }
 
-.items-content {
+
+.post-layout {
     position: relative;
-    width: 100%;
+    width: 80%;
+    margin: 0 5% 0 15% ;
 }
 
-.item {
-    width: 75%;
-    margin: 0 20% 10px 5%;
-    height: 500px;
-    background-color: red;
-}
+    .post-layout .post-items-layout {
+        display: flex;
+        color: var(--post-text-color);
+        background-color: var(--post-background-color);
+        text-align: center;
+        width: 60%;
+        padding: 0 20px;
+    }
 
+    .post-layout .post-image {
+        height: 200px;
+        width: 200px;
+    }
 
+    .post-layout .item {
+        width: 75%;
+        margin: 0 20% 10px 5%;
+        height: 500px;
+        background-color: red;
+    }
+
+    .post-layout .item-text-content {
+        font-family: Barlow,sans-serif;
+        font-weight: 700;
+        letter-spacing: 1px;
+        width: 100%;
+        padding: 10px 0;
+        display: flex;
+        flex-direction: column;
+    }
 
 
 .form-layout {
@@ -179,7 +206,6 @@ body {
     background-color: black;
     border-radius: 10px;
 }
-
 
 .form-field {
     text-align: center;

@@ -21,6 +21,7 @@ CREATE TABLE `users`
 -- ---------------------------
 -- Create table "firms"
 -- ---------------------------
+DROP TABLE IF EXISTS `firms`;
 
 CREATE TABLE `firms` (
     `id`    bigint                                 UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -32,6 +33,7 @@ CREATE TABLE `firms` (
 -- ---------------------------
 -- Create table "posts"
 -- ---------------------------
+DROP TABLE IF EXISTS `posts`;
 
 CREATE TABLE `posts` (
     `id`            bigint                         NOT NULL PRIMARY KEY AUTO_INCREMENT,
