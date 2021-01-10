@@ -45,7 +45,7 @@ switch ($path) {
     case "/account/edit":
         include "content/controllers/account/accountEditController.php"; break;
     case "/account/offers":
-        break; // TODO
+        include "content/controllers/account/accountOffersListController.php"; break;
     case "/offers/create":
         include "content/controllers/offers/offerCreateController.php"; break;
     case "/password/change":
