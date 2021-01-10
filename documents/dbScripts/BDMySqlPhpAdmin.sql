@@ -17,8 +17,30 @@ CREATE TABLE `users`
   DEFAULT CHARSET = utf8;
 
 
+
 -- ---------------------------
--- Create table ""
+-- Create table "firms"
 -- ---------------------------
 
+CREATE TABLE `firms` (
+    `id`    bigint                                 UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `name`  varchar(255)                           NOT NULL UNIQUE
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8;
 
+
+-- ---------------------------
+-- Create table "posts"
+-- ---------------------------
+
+CREATE TABLE `posts` (
+    `id`            bigint                         NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `model`         varchar(255)                   NOT NULL,
+    `price`         int                            NOT NULL,
+    `description`   text,
+    `photo_url`     varchar(255)                   DEFAULT NULL,
+    `available`     tinyint                        NOT NULL,
+    `user_id`       bigint                         NOT NULL,
+    `firm_id`       bigint                         NOT NULL
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8;

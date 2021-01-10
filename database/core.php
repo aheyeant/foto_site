@@ -40,7 +40,7 @@ class MySQLDatabase
      * @param $data - may by array (array('id' => '21'))
      * @return array
      */
-    function getRow($query, $data): array
+    function getRow($query, $data)
     {
         $statement = $this->pdo->prepare($query);
         $statement->execute($data);
@@ -52,7 +52,7 @@ class MySQLDatabase
      * @param $data - may by array (array('id' => '21'))
      * @return array
      */
-    function getMultiplyRows($query, $data): array
+    function getMultiplyRows($query, $data)
     {
         $statement = $this->pdo->prepare($query);
         $statement->execute($data);

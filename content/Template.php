@@ -39,9 +39,9 @@ class Template {
     /**
      * When accessing, for example, $this->title, $this->data["title"] will be displayed
      * @param $name
-     * @return string
+     * @return mixed
      */
-    public function __get($name): string
+    public function __get($name)
     {
         if (isset($this->data[$name])) return $this->data[$name];
         return "";

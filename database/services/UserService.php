@@ -2,6 +2,7 @@
 
 require_once "IService.php";
 require_once "database/core.php";
+require_once "database/model/User.php";
 
 
 class UserService implements IService {

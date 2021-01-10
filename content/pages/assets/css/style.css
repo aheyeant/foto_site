@@ -1,12 +1,32 @@
 :root {
-    --nav-background-color-black: rgb(0,0,0);
     --nav-text-color: rgb(255,255,255);
+    --nav-background-color-black: rgb(0,0,0);
     --nav-item-hover-color: #95989a;
+
+    --form-text-color: rgb(255,255,255);
+    --form-background-color: rgba(0,0,0,0.5);
+    --form-item-hover-color: #95989a;
+    --form-border-color: #95989a;
+    --form-field-border-color: #95989a;
+
+    --account-text-color: rgb(255,255,255);
+    --account-fill-color: rgb(255,255,255);
+    --account-selected-color: #95989a;
+    --account-item-hover-color: #95989a;
+    --account-background-color: rgb(0,0,0);
+
+    --account-content-text-color: rgb(0,0,0);
+    --account-content-item-hover-color: #95989a;
+
     --default-color: rgb(1,1,1);
 }
 
 a {
     text-decoration: none;
+}
+
+textarea {
+    resize: none;
 }
 
 body {
@@ -49,7 +69,6 @@ body {
         border-color: var(--nav-item-hover-color);
     }
 
-
     #masterHead .nav-layout {
         display: flex;
         flex-direction: row-reverse;
@@ -88,7 +107,7 @@ body {
                 padding-top: 4px;
             }
 
-                #masterHead .nav-layout .nav-user .sign-button-layout .username {
+                #masterHead .nav-layout .nav-user .sign-button-layout .user-account {
                     max-width: 20px;
                     padding-top: 4px;
                     padding-right: 30px;
@@ -98,11 +117,20 @@ body {
                     letter-spacing: 1px;
                     font-size: 14px;
                     text-transform: uppercase;
+                    fill: var(--nav-text-color);
                 }
 
-                #masterHead .nav-layout .nav-user .sign-button-layout .username:hover {
+                #masterHead .nav-layout .nav-user .sign-button-layout .user-account:hover {
                     color: var(--nav-item-hover-color);
+                    fill: var(--nav-item-hover-color);
+
                 }
+
+                #masterHead .nav-layout .nav-user .sign-button-layout .nav-svg-icon {
+                    width: 20px;
+                    height: 12px;
+                }
+
 
 #pageContent {
     position: absolute;
@@ -140,6 +168,210 @@ body {
 
 
 
+.form-layout {
+    padding: 0 20px;
+}
+
+.form-layout .form {
+    width: 300px;
+    padding: 30px;
+    margin: 200px auto 0 auto;
+    background-color: black;
+    border-radius: 10px;
+}
+
+
+.form-field {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-family: Barlow,sans-serif;
+    font-weight: 600;
+    color: var(--form-text-color);
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.form-field:hover {
+    color: var(--form-item-hover-color);
+}
+
+    .form-field .form-error-message {
+        color: red;
+        font-size: 10px;
+        margin-top: 3px;
+    }
+
+    .form-field .form-field-required {
+        color: red;
+    }
+
+.sign-error-message-layout {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+    .sign-error-message-layout .sign-error-message {
+        font-family: Barlow,sans-serif;
+        font-weight: 600;
+        color: red;
+        font-size: 14px;
+    }
+
+.form-submit {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+    .form-submit .form-button {
+        color: var(--form-text-color);
+        font-family: Barlow,sans-serif;
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 14px;
+        text-transform: uppercase;
+        background-color: var(--form-background-color);
+        border: 2px solid var(--nav-text-color);
+        border-radius: 8px ;
+        padding: 6px;
+    }
+
+    .form-submit .form-button:hover {
+        color: var(--form-item-hover-color);
+        border-color: var(--nav-item-hover-color);
+    }
+
+.link-signup {
+    padding-top: 60px;
+    text-align: center;
+}
+
+    .link-signup a {
+        color: var(--form-text-color);
+        font-family: Barlow,sans-serif;
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 14px;
+        text-transform: uppercase;
+    }
+
+    .link-signup a:hover {
+        color: var(--form-item-hover-color);
+    }
+
+    .link-signup .a-border {
+        border: 2px solid var(--nav-text-color);
+        border-radius: 8px ;
+        padding: 6px;
+    }
+
+    .link-signup .a-border:hover {
+        border-color: var(--nav-item-hover-color);
+    }
+
+
+
+.account-layout {
+    display: flex;
+    margin: 0 20px;
+}
+
+    .account-layout .account-nav {
+        width: 250px;
+        color: var(--account-text-color);
+        font-family: Barlow,sans-serif;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .account-layout a {
+        color: var(--account-text-color);
+    }
+
+    .account-layout a:hover {
+        color: var(--account-item-hover-color);
+    }
+
+        .account-layout .account-nav .account-nav-field {
+            margin-bottom: 5px;
+            padding: 15px;
+            background-color: var(--account-background-color);
+        }
+
+            .account-layout .account-nav .account-nav-field .field-link {
+                padding: 0 10px;
+            }
+
+            .account-layout .account-nav .account-nav-field .field-link-padding {
+                padding-top: 3px;
+            }
+
+            .account-layout .account-nav .account-nav-field .field-edit {
+                padding-top: 2px;
+                padding-left: 40px;
+            }
+
+                .account-layout .account-nav .account-nav-field .field-edit .field-edit-icon {
+                    height: 16px;
+                    width: 16px;
+                    fill: var(--account-fill-color);
+                }
+
+                .account-layout .account-nav .account-nav-field .field-edit .field-edit-icon:hover {
+                    fill: var(--account-item-hover-color);
+                }
+
+    .account-layout .account-content-layout {
+        width: 90%;
+        margin: 0 5%;
+        text-align: center;
+    }
+
+        .account-layout .account-content-layout .account-content {
+            color: var(--account-content-text-color);
+            font-family: Barlow,sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+            .account-layout .account-content-layout .account-content .account-content-user-icon {
+
+            }
+
+                .account-layout .account-content-layout .account-content .account-content-user-icon .account-content-icon {
+                    height: 200px;
+                    width: 200px;
+                }
+
+            .account-layout .account-content-layout .account-content .account-content-item {
+                padding-top: 20px;
+            }
+
+
+
 .hidden {
     display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.none-text-transform {
+    text-transform: none;
+}
+
+.not-found-layout {
+    padding: 0 20px;
+    text-align: center;
+    font-size: 24px;
+    font-family: Barlow,sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
 }

@@ -16,7 +16,7 @@ if ($path[-1] == "/") {
     exit;
 }
 
-$p_array = explode("/", $path);
+$p_array = explode("/", $path . "/////////");
 
 
 
@@ -33,17 +33,23 @@ print $path;*/
 
 // ------------------ REMOVE -----------------------
 
-switch ($p_array[1]) {
-    case "signin":
+switch ($path) {
+    case "/signin":
         include "content/controllers/auth/signInPageController.php"; break;
-    case "signup":
+    case "/signup":
         include "content/controllers/auth/signUpPageController.php"; break;
-    case "signout":
+    case "/signout":
         include "content/controllers/auth/signOutPageController.php"; break;
-    case "current":
-        // TODO
-        print "Need implement";
-        break;
+    case "/account":
+        include "content/controllers/account/accountDetailsController.php"; break;
+    case "/account/edit":
+        include "content/controllers/account/accountEditController.php"; break;
+    case "/account/offers":
+        break; // TODO
+    case "/offers/create":
+        include "content/controllers/offers/offerCreateController.php"; break;
+    case "/password/change":
+        include "content/controllers/account/accountResetPasswordController.php"; break;
 
     default:
         include "content/controllers/404PageController.php";

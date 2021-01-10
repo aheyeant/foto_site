@@ -3,11 +3,14 @@
 require_once "database/DBConstants.php";
 require_once "HelpersConstants.php";
 require_once "database/model/User.php";
+require_once "database/services/UserService.php";
 
 class UserVerifyHelper {
 
     /**
      * Validates the input before setting it to the user
+     *
+     * Only for signUpPostController
      *
      * @param $username
      * @param $email
@@ -18,11 +21,7 @@ class UserVerifyHelper {
      * @param $blocked
      * @return array - ["success" => true|false,
      *                      if (true):  "object" => User
-     *                      if (false): "object" => error_log: ["username" => log|null,
-     *                                                          "email" => log|null,
-     *                                                          "password" => log|null,
-     *                                                          "phone" => log|null,
-     *                                                          "other" => log|null]
+     *                      if (false): "object" => null
      *                ]
      */
     public static function createAndVerifyUser($username, $email, $password, $phone, $role, $verified, $blocked): array
@@ -41,17 +40,31 @@ class UserVerifyHelper {
         $phone = VerifyHelper::removeWhitespaces($phone);
         if ($phone == "") $phone = null;
 
+        $_SESSION["signup_verify_old_username"] = $username;
+        $_SESSION["signup_verify_old_email"] = $email;
+        $_SESSION["signup_verify_old_phone"] = $phone;
+
         // TODO update error text
-        if (!self::verifyUsername($username)) {$error = true; $error_log["username"] = "Incorrect username";}
-        if (!self::verifyEmail($email))       {$error = true; $error_log["email"] = "Incorrect email";}
-        if (!self::verifyPassword($password)) {$error = true; $error_log["password"] = "Password must be at least " . HelpersConstants::$PASSWORD_MIN_LENGTH . " characters";}
-        if (!self::verifyPhone($phone))       {$error = true; $error_log["phone"] = "Incorrect phone number";}
+        if (!self::verifyUsername($username)) {$error = true; $_SESSION["signup_verify_log_username"] = "Incorrect username format";}
+        if (!self::verifyEmail($email))       {$error = true; $_SESSION["signup_verify_log_email"] = "Incorrect email format";}
+        if (!self::verifyPassword($password)) {$error = true; $_SESSION["signup_verify_log_password"] = "Password must be at least " . HelpersConstants::$PASSWORD_MIN_LENGTH . " characters";}
+        if (!self::verifyPhone($phone))       {$error = true; $_SESSION["signup_verify_log_phone"] = "Incorrect phone number format";}
         if ($verified) $verified = 1; else $verified = 0;
         if ($blocked) $blocked = 1; else $blocked = 0;
 
         if ($error) {
-            return ["success" => false, "object" => $error_log];
+            $_SESSION["signup_verify_error"] = true;
+            return ["success" => false, "object" => null];
         }
+
+        if (self::verifyUsernameExist($username)) {$error = true; $_SESSION["signup_verify_log_username"] = "Username already exists";}
+        if (self::verifyEmailExist($email))  {$error = true; $_SESSION["signup_verify_log_email"] = "Email already exists";}
+
+        if ($error) {
+            $_SESSION["signup_verify_error"] = true;
+            return ["success" => false, "object" => null];
+        }
+
         return ["success" => true, "object" => new User(null, $username, $email, $password, $phone, $role, $verified, $blocked)];
     }
 
@@ -64,7 +77,7 @@ class UserVerifyHelper {
     public static function verifyUsername($username): bool
     {
         if (!isset($username) || $username == "") return false;
-        if (strlen($username > HelpersConstants::$USERNAME_MAX_LENGTH)) return false;
+        if (strlen($username) > HelpersConstants::$USERNAME_MAX_LENGTH) return false;
         return (preg_match('/^[a-z0-9_]+$/', $username));
     }
 
@@ -92,7 +105,7 @@ class UserVerifyHelper {
     }
 
     /**
-     * Valid phone number([0-9]*) or null
+     * Valid phone number(+[0-9]*) or null
      *
      * @param $phone
      * @return bool
@@ -101,7 +114,8 @@ class UserVerifyHelper {
     {
         if ($phone == null) return true;
         if (strlen($phone) > HelpersConstants::$PHONE_MAX_LENGTH || strlen($phone) < HelpersConstants::$PHONE_MIN_LENGTH) return false;
-        return (preg_match('/^[0-9]+$/', $phone));
+        if ($phone[0] != "+") return false;
+        return (preg_match('/^[0-9]+$/', substr($phone, 1)));
     }
 
     /**
@@ -120,4 +134,23 @@ class UserVerifyHelper {
         }
     }
 
+    /**
+     * @param $username
+     * @return bool
+     */
+    public static function verifyUsernameExist($username): bool
+    {
+        $user = UserService::getByUsername($username);
+        return $user->isLoaded();
+    }
+
+    /**
+     * @param $email
+     * @return bool
+     */
+    public static function verifyEmailExist($email): bool
+    {
+        $user = UserService::getByEmail($email);
+        return $user->isLoaded();
+    }
 }
