@@ -10,6 +10,8 @@ class Post {
     public $available;
     public $user_id;
     public $firm_id;
+    public $user_username = null;
+    public $firm_name = null;
     public $is_loaded = false;
 
     /**

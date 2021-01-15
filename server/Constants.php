@@ -21,6 +21,7 @@ class Constants {
     public static $POST_ACCOUNT_EDIT = "edit-account";
     public static $POST_ACCOUNT_RESET_PASSWORD = "reset-password";
     public static $POST_CREATE_OFFER = "create-offer";
+    public static $POST_CREATE_RESERVATION = "create-reservation";
 
     // --- Helpers ---
     public static $USERNAME_MAX_LENGTH = 64;

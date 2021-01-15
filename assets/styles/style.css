@@ -20,6 +20,9 @@
 
     --post-text-color: rgb(255,255,255);
     --post-background-color: rgb(0,0,0);
+    --post-item-hover-color: #95989a;
+
+    --post-detail-text-color: black;
 
     --default-color: rgb(1,1,1);
 }
@@ -170,6 +173,7 @@ body {
         text-align: center;
         width: 60%;
         padding: 0 20px;
+        margin-bottom: 10px;
     }
 
     .post-layout .post-image {
@@ -192,8 +196,93 @@ body {
         padding: 10px 0;
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
     }
 
+        .post-layout .item-text-content .label-hover {
+
+        }
+
+            .post-layout .item-text-content .label-hover:hover {
+                color: var(--post-item-hover-color)
+            }
+
+        .post-layout .item-text-content .item-button-layout {
+
+        }
+
+            .post-layout .item-text-content .item-button-layout .item-button {
+                border-radius: 8px ;
+                padding: 6px;
+                color: var(--post-text-color);
+            }
+
+                .post-layout .item-text-content .item-button-layout .item-button:hover {
+                    color: var(--post-item-hover-color) ;
+                }
+
+        .post-layout .item-text-content .user-link-layout {
+            text-align: right;
+            color: var(--post-text-color);
+        }
+
+            .post-layout .item-text-content .user-link-layout .user-link {
+                color: var(--post-text-color);
+                fill: var(--post-text-color);
+            }
+
+                .post-layout .item-text-content .user-link-layout .user-link:hover {
+                    color: var(--post-item-hover-color);
+                    fill: var(--post-item-hover-color);
+                }
+
+                .post-layout .item-text-content .user-link-layout .user-link .user-link-icon {
+                    height: 12px;
+                    width: 20px;
+                }
+
+                    .post-layout .item-text-content .user-link-layout .user-link .user-link-icon:hover {
+                        fill: var(--post-item-hover-color);
+                    }
+
+.page-selector {
+    font-family: Barlow,sans-serif;
+    font-weight: 700;
+    text-align: center;
+    font-size: 20px;
+    width: 60%;
+    height: 30px;
+    margin: 25px 0;
+    color: var(--post-text-color);
+    fill: var(--post-text-color);
+}
+
+    .page-selector .selector-arrow {
+        height: 30px;
+        width: 30px;
+        background-color: var(--post-background-color);
+        fill: var(--post-text-color);
+        padding: 0 10px;
+    }
+
+        .page-selector .selector-arrow:hover {
+            fill: var(--post-item-hover-color);
+        }
+
+    .page-selector .selector-page-label {
+        background-color: var(--post-background-color);
+        margin: 0 0 0 5px;
+        padding: 0 10px;
+    }
+
+        .page-selector .selector-page-label:hover {
+            color: var(--post-item-hover-color);
+        }
+
+    .page-selector .icon {
+        height: 15px;
+        width: 15px;
+    }
 
 .form-layout {
     padding: 0 20px;
@@ -379,7 +468,100 @@ body {
                 padding-top: 20px;
             }
 
+.post-detail-main-layout {
+    margin: 0 20px;
+}
 
+    .post-detail-main-layout .post-detail-layout {
+        width: 80%;
+        margin: 0 12% 0 8%;
+        text-align: center;
+    }
+
+        .post-detail-main-layout .post-detail-layout .post-detail-content {
+            color: var(--account-content-text-color);
+            font-family: Barlow,sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+            .post-detail-main-layout .post-detail-layout .post-detail-content .post-detail-icon {
+
+            }
+
+                .post-detail-main-layout .post-detail-layout .post-detail-content .post-detail-icon .image {
+                    width: 200px;
+                    height: 200px;
+                }
+
+            .post-detail-main-layout .post-detail-layout .post-detail-content .post-detail-item {
+                padding-top: 20px;
+            }
+
+                .post-detail-main-layout .post-detail-layout .post-detail-content .post-detail-item .post-detail-user-link {
+                    color: var(--post-detail-text-color);
+                }
+
+                .post-detail-main-layout .post-detail-layout .post-detail-content .post-detail-item .post-detail-icon {
+                }
+
+                .post-detail-main-layout .post-detail-layout .post-detail-content .post-detail-item .post-detail-icon {
+                    height: 12px;
+                    width: 20px;
+                }
+
+                .post-detail-main-layout .post-detail-layout .post-detail-content .post-detail-item .reservation-button {
+                    border-radius: 5px;
+                    padding: 10px;
+                    color: var(--post-detail-text-color);
+                }
+
+
+.edit-buttons-layout {
+    text-align: center;
+}
+
+    .edit-buttons-layout .edit-buttons-container {
+
+    }
+
+        .edit-buttons-layout .edit-buttons-container .link {
+
+        }
+
+            .edit-buttons-layout .edit-buttons-container .link .icon-edit {
+                height: 30px;
+                width: 30px;
+                margin: 5px;
+                fill: var(--post-detail-text-color);
+            }
+
+                .edit-buttons-layout .edit-buttons-container .link .icon-edit:hover {
+                    fill: orange;
+                }
+
+            .edit-buttons-layout .edit-buttons-container .link .icon-visible {
+                height: 30px;
+                width: 30px;
+                margin: 5px;
+                fill: var(--post-detail-text-color);
+            }
+
+                .edit-buttons-layout .edit-buttons-container .link .icon-visible:hover {
+                    fill: green;
+                }
+
+            .edit-buttons-layout .edit-buttons-container .link .icon-delete {
+                height: 30px;
+                width: 30px;
+                margin: 5px;
+                fill: var(--post-detail-text-color);
+            }
+
+                .edit-buttons-layout .edit-buttons-container .link .icon-delete:hover {
+                    fill: red;
+                }
 
 .hidden {
     display: none;
@@ -400,4 +582,27 @@ body {
     font-family: Barlow,sans-serif;
     font-weight: 500;
     text-transform: uppercase;
+}
+
+.background-green {
+    background-color: green;
+}
+
+.background-red {
+    background-color: red;
+}
+
+.color-green {
+    color: green;
+}
+
+.color-red {
+    color: red;
+}
+
+.create-reservation-success {
+    text-align: center;
+    font-family: Barlow,sans-serif;
+    font-weight: 700;
+    font-size: 20px;
 }

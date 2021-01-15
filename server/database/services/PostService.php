@@ -5,6 +5,8 @@ $__ROOT__ = dirname(dirname(__FILE__));
 require_once("IService.php");
 require_once($__ROOT__."/core.php");
 require_once($__ROOT__."/model/Post.php");
+require_once($__ROOT__."/services/UserService.php");
+require_once($__ROOT__."/services/FirmService.php");
 require_once($__ROOT__."/../Constants.php");
 
 
@@ -68,11 +70,61 @@ class PostService implements IService {
             if (count($all) == $i) break;
             $ret[] = $all[$i];
         }
-        $prev = $page - 1;
-        $next = $page + 1;
-        if ($prev == 0) $prev = null;
+        $prev = "page=".($page - 1);
+        $next = "page=".($page + 1);
+        if ($page - 1 == 0) $prev = null;
         if (count($all) - $page * Constants::$ITEMS_PER_PAGE <= 0) $next = null;
         return ["error" => false, "page" => $page, "prev" => $prev, "next" => $next, "items" => $ret];
+    }
+
+    /**
+     * @param $user_id: int
+     * @param $page : int
+     * @return array = ["error": false|true,
+     *                  "page": int|null,
+     *                  "prev": int|null
+     *                  "next": int|null
+     *                  "items": array Post|null]
+     */
+    public static function getByUserIdByPage($user_id, $page): array
+    {
+        if (!isset($page) || !is_int($page) || $page < 1) {
+            return ["error" => true, "page" => null, "prev" => null, "next" => null, "items" => null];
+        }
+        $all = self::getAllByUserId($user_id);
+        if (count($all) == 0) {
+            return ["error" => false, "page" => 1, "prev" => null, "next" => null, "items" => []];
+        }
+        if (count($all) - $page * Constants::$ITEMS_PER_PAGE <= -Constants::$ITEMS_PER_PAGE) {
+            return ["error" => true, "page" => null, "prev" => null, "next" => null, "items" => null];
+        }
+        $ret = [];
+        for ($i = ($page - 1) * Constants::$ITEMS_PER_PAGE; $i < ($page) * Constants::$ITEMS_PER_PAGE; $i++) {
+            if (count($all) == $i) break;
+            $ret[] = $all[$i];
+        }
+        $prev = "page=".($page - 1);
+        $next = "page=".($page + 1);
+        if ($page - 1 == 0) $prev = null;
+        if (count($all) - $page * Constants::$ITEMS_PER_PAGE <= 0) $next = null;
+        return ["error" => false, "page" => $page, "prev" => $prev, "next" => $next, "items" => $ret];
+    }
+
+    /**
+     * Load $user_username and $firm_name
+     *
+     * @param $posts - array Post
+     * @return array
+     */
+    public static function fetchPostsArray($posts): array
+    {
+        foreach ($posts as $post) {
+            $user = UserService::getById($post->user_id);
+            $firm = FirmService::getById($post->firm_id);
+            $post->user_username = strlen($user->username) > 12 ? substr($user->username, 0, 12) . "..." : $user->username;
+            $post->firm_name = $firm->name;
+        }
+        return $posts;
     }
 
     /**
