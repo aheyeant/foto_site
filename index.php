@@ -1,16 +1,6 @@
 <?php
-    require_once "routers/RouterConstants.php";
 
-    session_start();
+    require_once "server/Constants.php";
 
-    if (isset($_POST[RouterConstants::$POST_ACTION_NAME])) {
-        include "routers/PostRouter.php";
-        exit;
-    }
-
-    if (isset($_GET[RouterConstants::$GET_ACTION_NAME])) {
-        include "routers/GetRouter.php";
-        exit;
-    }
-
-    include "routers/PathRouter.php";
+    header("Location: http://".$_SERVER['HTTP_HOST'].Constants::$DEPLOY_PREFIX."/home");
+    exit;
