@@ -6,7 +6,7 @@ require_once("../server/database/services/PostService.php");
 
 
 $template = new Template("./");
-$title = "Account details";
+$title = "Offer details";
 
 $user_logged = false;
 $user_username = null;

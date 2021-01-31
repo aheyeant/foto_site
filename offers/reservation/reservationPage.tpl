@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title><?=$this->title?></title>
     <link href="<?=$this->deploy_prefix?>/assets/styles/style.css" rel="stylesheet">
+    <script src="<?=$this->deploy_prefix?>/assets/scripts/verify.js"></script>
 </head>
 <body>
 <div id="masterHead" class="master-header">

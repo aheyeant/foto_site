@@ -21,7 +21,7 @@ class PostVerifyHelper {
      */
     public static function createAndVerifyPost($model, $price, $description, $photo_url, $available, $user_id, $firm_id): Post
     {
-        $model = self::editMadel($model);
+        $model = self::editModel($model);
         $price = self::editPrice($price);
         $description = self::editDescription($description);
         return new Post(null, $model, $price, $description, $photo_url, $available, $user_id, $firm_id);
@@ -32,7 +32,7 @@ class PostVerifyHelper {
      * @param $model - string
      * @return string
      */
-    private static function editMadel($model): string
+    public static function editModel($model): string
     {
         if (!isset($model)) return "Undefined";
         $model = str_replace("<", "", $model);
@@ -55,11 +55,11 @@ class PostVerifyHelper {
      * @param $description - string
      * @return string
      */
-    private static function editDescription($description): string
+    public static function editDescription($description): string
     {
         if (!isset($description)) return "";
         $description = str_replace("<", "", $description);
-        $description = str_replace("<", "", $description);
+        $description = str_replace(">", "", $description);
         $description = substr($description, 0, 1000);
         return $description;
     }

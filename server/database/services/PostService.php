@@ -252,6 +252,10 @@ class PostService implements IService {
 
     public static function delete($id)
     {
-        // TODO: Implement delete() method.
+        $db = new MySQLDatabase();
+        $db->connect();
+        $query = "DELETE FROM posts WHERE id = :id";
+        $db->delete($query, ["id" => $id]);
+        $db->close();
     }
 }

@@ -15,7 +15,7 @@ if (!$user_logged) {
 }
 
 $template = new Template("./");
-$title = "Account details";
+$title = "My offers";
 
 $page = 1;
 if (isset($_GET["page"])) $page = intval($_GET["page"]);

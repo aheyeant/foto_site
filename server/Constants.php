@@ -6,6 +6,11 @@ class Constants {
     public static $SITE_NAME = "Filmer";
     public static $SITE_NAME_UPPERCASE = "FILMER";
 
+    // [FEL]
+    //public static $FEL_SERVER = true;
+    public static $FEL_SERVER = false;
+
+    // [FEL]
     //public static $DEPLOY_PREFIX = "/~skalkste"; // fel server
     public static $DEPLOY_PREFIX = ""; // clear server
 
@@ -21,6 +26,7 @@ class Constants {
     public static $POST_ACCOUNT_EDIT = "edit-account";
     public static $POST_ACCOUNT_RESET_PASSWORD = "reset-password";
     public static $POST_CREATE_OFFER = "create-offer";
+    public static $POST_EDIT_OFFER = "edit-offer";
     public static $POST_CREATE_RESERVATION = "create-reservation";
 
     // --- Helpers ---
@@ -41,5 +47,6 @@ class Constants {
     public static $ROLE_USER = "ROLE_USER";
 
     public static $IMAGES_ASSETS_PATH = "/assets/images/";
+    public static $FEL_IMAGES_ASSETS_PATH = "/home/skalkste/www/assets/images/";
     public static $DEFAULT_IMAGE_NAME = "camera.png";
 }

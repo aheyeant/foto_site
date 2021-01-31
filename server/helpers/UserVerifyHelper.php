@@ -78,6 +78,8 @@ class UserVerifyHelper {
     public static function verifyUsername($username): bool
     {
         if (!isset($username) || $username == "") return false;
+        $username = str_replace("<", "", $username);
+        $username = str_replace(">", "", $username);
         if (strlen($username) > Constants::$USERNAME_MAX_LENGTH) return false;
         return (preg_match('/^[a-z0-9_]+$/', $username));
     }
@@ -90,8 +92,7 @@ class UserVerifyHelper {
     {
         if (!isset($email) || $email == "") return false;
         if (strlen($email) > Constants::$EMAIL_MAX_LENGTH) return false;
-        // TODO verifyEmail implement
-        return true;
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
     /**

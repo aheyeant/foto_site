@@ -79,9 +79,9 @@
                                 <span class="label-hover"><?=$item->price?>$ per day</span>
                                 <div class="item-button-layout">
                                     <?php if($item->available) { ?>
-                                    <a href="<?=$this->deploy_prefix?>/offers?id=<?=$item->id?>" class="item-button background-green">Details</a>
+                                        <a href="<?=$this->deploy_prefix?>/offers?id=<?=$item->id?>" class="item-button background-green">Detail</a>
                                     <?php } else { ?>
-                                    <a href="<?=$this->deploy_prefix?>/offers?id=<?=$item->id?>" class="item-button background-red">Details</a>
+                                        <a href="<?=$this->deploy_prefix?>/offers?id=<?=$item->id?>" class="item-button background-red">Detail</a>
                                     <?php } ?>
                                 </div>
                                 <div class="user-link-layout">
@@ -100,9 +100,11 @@
                             </a>
                         <?php } ?>
 
-                        <span class="selector-page-label"><?=$this->post_items_page?></span>
+                        <?php if ($this->post_items_prev != null || $this->post_items_next != null) { ?>
+                            <span class="selector-page-label"><?=$this->post_items_page?></span>
+                        <?php } ?>
 
-                        <?php if ($this->post_items_next) { ?>
+                        <?php if ($this->post_items_next != null) { ?>
                             <a href="<?=$this->deploy_prefix?><?=$this->post_items_next?>" class="selector-arrow">
                                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M509.035,248.212l-213.504-212.8c-3.051-3.029-7.595-3.904-11.627-2.304c-3.989,1.664-6.571,5.547-6.571,9.856v117.333    H10.667C4.779,160.298,0,165.076,0,170.964v170.667c0,5.888,4.779,10.667,10.667,10.667h266.667v116.885    c0,4.309,2.603,8.192,6.592,9.856c1.323,0.555,2.709,0.811,4.075,0.811c2.773,0,5.504-1.088,7.552-3.115l213.504-213.419    c2.005-2.005,3.115-4.715,3.115-7.552C512.171,252.927,511.04,250.218,509.035,248.212z"/></svg>
                             </a>

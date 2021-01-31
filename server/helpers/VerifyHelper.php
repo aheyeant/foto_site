@@ -63,4 +63,16 @@ class VerifyHelper {
         $str = self::toLowerCase($str);
         return $str;
     }
+
+    /**
+     * @param $text - string
+     * @return string
+     */
+    public static function replaceScriptTags($text): string
+    {
+        if (!isset($text)) return "Undefined";
+        $text = str_replace("<", "", $text);
+        $text = str_replace(">", "", $text);
+        return $text;
+    }
 }

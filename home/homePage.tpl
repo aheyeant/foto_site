@@ -73,7 +73,9 @@
                     </a>
                 <?php } ?>
 
-                <span class="selector-page-label"><?=$this->post_items_page?></span>
+                <?php if ($this->post_items_prev != null || $this->post_items_next != null) { ?>
+                    <span class="selector-page-label"><?=$this->post_items_page?></span>
+                <?php } ?>
 
                 <?php if ($this->post_items_next) { ?>
                     <a href="<?=$this->deploy_prefix?><?=$this->post_items_next?>" class="selector-arrow">

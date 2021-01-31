@@ -4,6 +4,7 @@ $__ROOT__ = dirname(dirname(__FILE__));
 
 require_once($__ROOT__."/../server/Constants.php");
 require_once($__ROOT__."/../server/database/services/UserService.php");
+require_once($__ROOT__."/../../server/database/services/PostService.php");
 require_once($__ROOT__."/../helpers/VerifyHelper.php");
 require_once($__ROOT__."/../helpers/UserVerifyHelper.php");
 
@@ -40,12 +41,28 @@ if ($_SESSION["reservation_verify_error"] == true) {
     exit;
 }
 
-//TODO implement send email
-/*if (!sendEmail()) {
-    $_SESSION["reservation_create_error"] = true;
-    header("Location: http://".$_SERVER['HTTP_HOST'].Constants::$DEPLOY_PREFIX."/offers/reservation?id=".$post_id);
+$post = PostService::getById($post_id);
+if (!$post->isLoaded()) {
+    header("Location: http://".$_SERVER['HTTP_HOST'].Constants::$DEPLOY_PREFIX."/404");
     exit;
-}*/
+}
+
+
+$user = UserService::getById($post->user_id);
+$to = $user->email;
+$subject = "Reservation";
+$message = "Dear ". $user->username. ".\n".
+           $email." reacted to your offer \"". $post->model ."\"".
+           "Please contact him for more details.\n".
+           "Email: ".$email."\n";
+
+if ($phone != null) {
+    $message .= "Phone: ".$phone."\n";
+}
+$message .= "Best regards,\n team FILMER\n";
+$headers = 'From: noreply <noreply@filmer.com>\r\nX-Mailer: PHP/'.phpversion();
+
+mail($to, $subject, $message, $headers);
 
 header("Location: http://".$_SERVER['HTTP_HOST'].Constants::$DEPLOY_PREFIX."/offers/reservation/success");
 exit;

@@ -1,14 +1,8 @@
 <?php
 
-//defined('INDEX') OR die('Прямой доступ к странице запрещён!');
-
 // MYSQL
 class MySQLDatabase
 {
-    //windows
-    //private $db_login = "root";         // login
-    //private $db_pass = "Qwerty1234$";   // password
-
     //linux
     private $db_login = "phpmyadmin";   // login
     private $db_pass = "1234";          // password
