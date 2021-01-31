@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title><?=$this->title?></title>
     <link href="<?=$this->deploy_prefix?>/assets/styles/style.css" rel="stylesheet">
+    <script src="<?=$this->deploy_prefix?>/assets/scripts/verify.js"></script>
 </head>
 <body>
 <div id="masterHead" class="master-header">
@@ -35,55 +36,55 @@
 <div id="pageContent">
     <div class="form-layout">
         <div class="form">
-            <form method="post">
+            <form method="post" onsubmit="return signupPageVerify()">
                 <input type="hidden" name="post" readonly value="signup">
                 <?php if (!$this->verify_error) { ?>
                     <div class="form-field">
                         <span title="Only lowercase characters, numbers or '_'">Username<span class="form-field-required"> *</span></span>
-                        <input type="text" name="username" autocomplete="off" required placeholder="username" title="Only lowercase characters, numbers or '_'">
-                        <span class="form-error-message hidden"></span>
+                        <input id="input_username" type="text" name="username" autocomplete="off" required placeholder="username" title="Only lowercase characters, numbers or '_'">
+                        <span id="error_username" class="form-error-message hidden"></span>
                     </div>
 
                     <div class="form-field">
                         <span title="Enter your email">Email<span class="form-field-required"> *</span></span>
-                        <input type="email" name="email" autocomplete="off" required placeholder="example@example.com" title="Enter your email">
-                        <span class="form-error-message hidden"></span>
+                        <input id="input_email" type="email" name="email" autocomplete="off" required placeholder="example@example.com" title="Enter your email">
+                        <span id="error_email" class="form-error-message hidden"></span>
                     </div>
 
                     <div class="form-field">
                         <span title="Phone number must start with +">Phone number</span>
-                        <input type="text" name="phone" autocomplete="off" placeholder="+420 777204045" title="Phone number must start with +">
-                        <span class="form-error-message hidden"></span>
+                        <input id="input_phone" type="text" name="phone" autocomplete="off" placeholder="+420 777204045" title="Phone number must start with +">
+                        <span id="error_phone" class="form-error-message hidden"></span>
                     </div>
 
                     <div class="form-field">
                         <span title="At least 4 characters">Password<span class="form-field-required"> *</span></span>
-                        <input type="password" name="password" autocomplete="off" required title="At least 4 characters">
-                        <span class="form-error-message"></span>
+                        <input id="input_password" type="password" name="password" autocomplete="off" required title="At least 4 characters">
+                        <span id="error_password" class="form-error-message"></span>
                     </div>
                 <?php } else { ?>
                     <div class="form-field">
                         <span title="Only lowercase characters, numbers or '_'">Username<span class="form-field-required"> *</span></span>
-                        <input type="text" name="username" autocomplete="off" required value="<?=$this->old_username?>" title="Only lowercase characters, numbers or '_'">
-                        <span class="form-error-message"><?=$this->log_username?></span>
+                        <input id="input_username" type="text" name="username" autocomplete="off" required value="<?=$this->old_username?>" title="Only lowercase characters, numbers or '_'">
+                        <span id="error_username" class="form-error-message"><?=$this->log_username?></span>
                     </div>
 
                     <div class="form-field">
                         <span title="Enter your email">Email<span class="form-field-required"> *</span></span>
-                        <input type="email" name="email" autocomplete="off" required value="<?=$this->old_email?>" title="Enter your email">
-                        <span class="form-error-message"><?=$this->log_email?></span>
+                        <input id="input_email" type="email" name="email" autocomplete="off" required value="<?=$this->old_email?>" title="Enter your email">
+                        <span id="error_email" class="form-error-message"><?=$this->log_email?></span>
                     </div>
 
                     <div class="form-field">
                         <span title="Phone number must start with +">Phone number</span>
-                        <input type="text" name="phone" autocomplete="off" value="<?=$this->old_phone?>" title="Phone number must start with +">
-                        <span class="form-error-message"><?=$this->log_phone?></span>
+                        <input id="input_phone" type="text" name="phone" autocomplete="off" value="<?=$this->old_phone?>" title="Phone number must start with +">
+                        <span id="error_phone" class="form-error-message"><?=$this->log_phone?></span>
                     </div>
 
                     <div class="form-field">
                         <span title="At least 4 characters">Password<span class="form-field-required"> *</span></span>
-                        <input type="password" name="password" autocomplete="off" required title="At least 4 characters">
-                        <span class="form-error-message"><?=$this->log_password?></span>
+                        <input id="input_password" type="password" name="password" autocomplete="off" required title="At least 4 characters">
+                        <span id="error_password" class="form-error-message"><?=$this->log_password?></span>
                     </div>
                 <?php } ?>
 

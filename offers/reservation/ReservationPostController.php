@@ -61,8 +61,13 @@ if ($phone != null) {
 }
 $message .= "Best regards,\n team FILMER\n";
 $headers = 'From: noreply <noreply@filmer.com>\r\nX-Mailer: PHP/'.phpversion();
+//$headers = "From: noreply <".$user->email.">\r\nX-Mailer: PHP/".phpversion();
 
-mail($to, $subject, $message, $headers);
+$success = mail($to, $subject, $message, $headers);
+if ($success == true) {
+    header("Location: http://".$_SERVER['HTTP_HOST'].Constants::$DEPLOY_PREFIX."/offers/reservation/success");
+} else {
+    header("Location: http://".$_SERVER['HTTP_HOST'].Constants::$DEPLOY_PREFIX."/offers/reservation/fail");
+}
 
-header("Location: http://".$_SERVER['HTTP_HOST'].Constants::$DEPLOY_PREFIX."/offers/reservation/success");
 exit;

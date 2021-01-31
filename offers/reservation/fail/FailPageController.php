@@ -6,7 +6,7 @@ require_once("../../../server/database/services/UserService.php");
 
 
 $template = new Template("./");
-$title = "Reservation success";
+$title = "Reservation fail";
 
 $user_logged = false;
 $user_username = null;
@@ -22,4 +22,4 @@ $template->set("deploy_prefix", Constants::$DEPLOY_PREFIX);
 $template->set("user_logged", $user_logged);
 $template->set("user_username", $user_username);
 //------------------------------------------------
-$template->display("successPage");
+$template->display("failPage");

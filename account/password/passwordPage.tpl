@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title><?=$this->title?></title>
     <link href="<?=$this->deploy_prefix?>/assets/styles/style.css" rel="stylesheet">
+    <script src="<?=$this->deploy_prefix?>/assets/scripts/verify.js"></script>
 </head>
 <body>
 <div id="masterHead" class="master-header">
@@ -68,31 +69,31 @@
             <div class="account-content">
                 <div class="form-layout">
                     <div class="form">
-                        <form method="post">
+                        <form method="post" onsubmit="return accountPasswordVerify()">
                             <input type="hidden" name="post" readonly value="reset-password">
                             <?php if (!$this->verify_error) { ?>
                                 <div class="form-field">
                                     <span title="At least 4 characters">Old password<span class="form-field-required"> *</span></span>
-                                    <input type="password" name="old_password" autocomplete="off" required title="At least 4 characters">
-                                    <span class="form-error-message"></span>
+                                    <input id="input_old_password" type="password" name="old_password" autocomplete="off" required title="At least 4 characters">
+                                    <span id="error_old_password" class="form-error-message"></span>
                                 </div>
 
                                 <div class="form-field">
                                     <span title="At least 4 characters">New password<span class="form-field-required"> *</span></span>
-                                    <input type="password" name="new_password" autocomplete="off" required title="At least 4 characters">
-                                    <span class="form-error-message"></span>
+                                    <input id="input_new_password" type="password" name="new_password" autocomplete="off" required title="At least 4 characters">
+                                    <span id="error_new_password" class="form-error-message"></span>
                                 </div>
                             <?php } else { ?>
                                 <div class="form-field">
                                     <span title="At least 4 characters">Old password<span class="form-field-required"> *</span></span>
-                                    <input type="password" name="old_password" autocomplete="off" required title="At least 4 characters">
-                                    <span class="form-error-message"><?=$this->log_old_password?></span>
+                                    <input id="input_old_password" type="password" name="old_password" autocomplete="off" required title="At least 4 characters">
+                                    <span id="error_old_password" class="form-error-message"><?=$this->log_old_password?></span>
                                 </div>
 
                                 <div class="form-field">
                                     <span title="At least 4 characters">New password<span class="form-field-required"> *</span></span>
-                                    <input type="password" name="new_password" autocomplete="off" required title="At least 4 characters">
-                                    <span class="form-error-message"><?=$this->log_new_password?></span>
+                                    <input id="input_new_password" type="password" name="new_password" autocomplete="off" required title="At least 4 characters">
+                                    <span id="error_new_password" class="form-error-message"><?=$this->log_new_password?></span>
                                 </div>
 
                             <?php } ?>

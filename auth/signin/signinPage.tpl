@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title><?=$this->title?></title>
     <link href="<?=$this->deploy_prefix?>/assets/styles/style.css" rel="stylesheet">
+    <script src="<?=$this->deploy_prefix?>/assets/scripts/verify.js"></script>
 </head>
 <body>
 <div id="masterHead" class="master-header">
@@ -35,44 +36,44 @@
 <div id="pageContent">
     <div class="form-layout">
         <div class="form">
-            <form method="post">
+            <form method="post" onsubmit="return signinPageVerify()">
                 <input type="hidden" name="post" readonly value="signin">
                 <?php if(!$this->verify_error and !$this->signin_error) { ?>
                     <div class="form-field">
                         <span title="Only lowercase characters, numbers or '_'">Username<span class="form-field-required"> *</span></span>
-                        <input type="text" name="username" autocomplete="off" required placeholder="username" title="Only lowercase characters, numbers or '_'">
-                        <span class="form-error-message hidden"></span>
+                        <input id="input_username" type="text" name="username" autocomplete="off" required placeholder="username" title="Only lowercase characters, numbers or '_'">
+                        <span id="error_username" class="form-error-message hidden"></span>
                     </div>
                     <div class="form-field">
                         <span title="At least 4 characters">Password<span class="form-field-required"> *</span></span>
-                        <input type="password" name="password" autocomplete="off" required title="At least 4 characters">
-                        <span class="form-error-message hidden"></span>
+                        <input id="input_password" type="password" name="password" autocomplete="off" required title="At least 4 characters">
+                        <span id="error_password" class="form-error-message hidden"></span>
                     </div>
                 <?php } else { ?>
                     <?php if ($this->log_username == null) { ?>
                         <div class="form-field">
                             <span title="Only lowercase characters, numbers or '_'">Username<span class="form-field-required"> *</span></span>
-                            <input type="text" name="username" autocomplete="off" required placeholder="username" value="<?=$this->old_username?>" title="Only lowercase characters, numbers or '_'">
-                            <span class="form-error-message hidden"></span>
+                            <input id="input_username" type="text" name="username" autocomplete="off" required placeholder="username" value="<?=$this->old_username?>" title="Only lowercase characters, numbers or '_'">
+                            <span id="error_username" class="form-error-message hidden"></span>
                         </div>
                     <?php } else { ?>
                         <div class="form-field">
                             <span title="Only lowercase characters, numbers or '_'">Username<span class="form-field-required"> *</span></span>
-                            <input type="text" name="username" autocomplete="off" required placeholder="username" value="<?=$this->old_username?>" title="Only lowercase characters, numbers or '_'">
-                            <span class="form-error-message"><?=$this->log_username?></span>
+                            <input id="input_username" type="text" name="username" autocomplete="off" required placeholder="username" value="<?=$this->old_username?>" title="Only lowercase characters, numbers or '_'">
+                            <span id="error_username" class="form-error-message"><?=$this->log_username?></span>
                         </div>
                     <?php } ?>
                     <?php if ($this->log_password == null) { ?>
                         <div class="form-field">
                             <span title="At least 4 characters">Password<span class="form-field-required"> *</span></span>
-                            <input type="password" name="password" autocomplete="off" required title="At least 4 characters">
-                            <span class="form-error-message hidden"></span>
+                            <input id="input_password" type="password" name="password" autocomplete="off" required title="At least 4 characters">
+                            <span id="error_password" class="form-error-message hidden"></span>
                         </div>
                     <?php } else { ?>
                         <div class="form-field">
                             <span title="At least 4 characters">Password<span class="form-field-required"> *</span></span>
-                            <input type="password" name="password" autocomplete="off" required title="At least 4 characters">
-                            <span class="form-error-message"><?=$this->log_password?></span>
+                            <input id="input_password" type="password" name="password" autocomplete="off" required title="At least 4 characters">
+                            <span id="error_password" class="form-error-message"><?=$this->log_password?></span>
                         </div>
                     <?php } ?>
                 <?php } ?>

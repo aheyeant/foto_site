@@ -36,32 +36,32 @@
 <div id="pageContent">
     <div class="form-layout">
         <div class="form">
-            <form method="post">
+            <form method="post" onsubmit="return makeReservationVerify()">
                 <input type="hidden" name="post" readonly value="create-reservation">
                 <input type="hidden" name="post_id" value="<?=$this->post_id?>">
                 <?php if (!$this->verify_error) { ?>
                     <div class="form-field">
                         <span title="Enter your email">Email<span class="form-field-required"> *</span></span>
-                        <input type="email" name="email" autocomplete="off" required placeholder="example@example.com" title="Enter your email" value="<?=$this->user_email?>">
-                        <span class="form-error-message hidden"></span>
+                        <input id="input_email" type="email" name="email" autocomplete="off" required placeholder="example@example.com" title="Enter your email" value="<?=$this->user_email?>">
+                        <span id="error_email" class="form-error-message hidden"></span>
                     </div>
 
                     <div class="form-field">
                         <span title="Phone number must start with +">Phone number</span>
-                        <input type="text" name="phone" autocomplete="off" placeholder="+420 777204045" title="Phone number must start with +" value="<?=$this->user_phone?>">
-                        <span class="form-error-message hidden"></span>
+                        <input id="input_phone" type="text" name="phone" autocomplete="off" placeholder="+420 777204045" title="Phone number must start with +" value="<?=$this->user_phone?>">
+                        <span id="error_phone" class="form-error-message hidden"></span>
                     </div>
                 <?php } else { ?>
                     <div class="form-field">
                         <span title="Enter your email">Email<span class="form-field-required"> *</span></span>
-                        <input type="email" name="email" autocomplete="off" required value="<?=$this->old_email?>" title="Enter your email">
-                        <span class="form-error-message"><?=$this->log_email?></span>
+                        <input id="input_email" type="email" name="email" autocomplete="off" required value="<?=$this->old_email?>" title="Enter your email">
+                        <span id="error_email" class="form-error-message"><?=$this->log_email?></span>
                     </div>
 
                     <div class="form-field">
                         <span title="Phone number must start with +">Phone number</span>
-                        <input type="text" name="phone" autocomplete="off" value="<?=$this->old_phone?>" title="Phone number must start with +">
-                        <span class="form-error-message"><?=$this->log_phone?></span>
+                        <input id="input_phone" type="text" name="phone" autocomplete="off" value="<?=$this->old_phone?>" title="Phone number must start with +">
+                        <span id="error_phone" class="form-error-message"><?=$this->log_phone?></span>
                     </div>
                 <?php } ?>
 

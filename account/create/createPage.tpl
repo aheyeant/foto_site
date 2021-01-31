@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title><?=$this->title?></title>
     <link href="<?=$this->deploy_prefix?>/assets/styles/style.css" rel="stylesheet">
+    <script src="<?=$this->deploy_prefix?>/assets/scripts/verify.js"></script>
 </head>
 <body>
 <div id="masterHead" class="master-header">
@@ -68,7 +69,7 @@
             <div class="account-content">
                 <div class="form-layout">
                     <div class="form">
-                        <form method="post" enctype="multipart/form-data">
+                        <form method="post" enctype="multipart/form-data" onsubmit="return createOfferVerify()">
                             <input type="hidden" name="post" readonly value="create-offer">
                             <div class="form-field">
                                 <span title="Сamera firm">Firm<span class="form-field-required"> *</span></span>
@@ -86,20 +87,20 @@
 
                             <div class="form-field">
                                 <span title="Сamera model">Model<span class="form-field-required"> *</span></span>
-                                <input type="text" name="model" autocomplete="off" required placeholder="model" title="Сamera model">
-                                <span class="form-error-message hidden"></span>
+                                <input id="input_model" type="text" name="model" autocomplete="off" required placeholder="model" title="Сamera model">
+                                <span id="error_model" class="form-error-message hidden"></span>
                             </div>
 
                             <div class="form-field">
                                 <span title="Enter price(USD) per day">Price(USD)<span class="form-field-required"> *</span></span>
-                                <input type="number" name="price" autocomplete="off" required placeholder="100" min="0" max="1000" title="Enter price(USD) per day">
-                                <span class="form-error-message hidden"></span>
+                                <input id="input_price" type="number" name="price" autocomplete="off" required placeholder="100" min="0" max="1000" title="Enter price(USD) per day">
+                                <span id="error_price" class="form-error-message hidden"></span>
                             </div>
 
                             <div class="form-field">
                                 <span title="Description max 1000 chars">description</span>
-                                <textarea name="description" cols="40" rows="3" title="Description max 1000 chars"></textarea>
-                                <span class="form-error-message hidden"></span>
+                                <textarea id="input_description" name="description" cols="40" rows="3" title="Description max 1000 chars"></textarea>
+                                <span id="error_description" class="form-error-message hidden"></span>
                             </div>
 
                             <div class="form-field">
