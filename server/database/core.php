@@ -4,12 +4,12 @@
 class MySQLDatabase
 {
     //linux
-    //private $db_login = "phpmyadmin";   // login
-    //private $db_pass = "1234";          // password
+    private $db_login = "phpmyadmin";   // login
+    private $db_pass = "1234";          // password
 
     //server
-    private $db_login = "skalkste";           // login
-    private $db_pass = "webove aplikace";     // password
+    //private $db_login = "skalkste";           // login
+    //private $db_pass = "webove aplikace";     // password
 
     private $db_name = "skalkste";      // db name
     private $db_host = "localhost";     // host

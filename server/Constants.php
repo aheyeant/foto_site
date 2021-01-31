@@ -7,12 +7,12 @@ class Constants {
     public static $SITE_NAME_UPPERCASE = "FILMER";
 
     // [FEL]
-    public static $FEL_SERVER = true;
-    //public static $FEL_SERVER = false;
+    //public static $FEL_SERVER = true;
+    public static $FEL_SERVER = false;
 
     // [FEL]
-    public static $DEPLOY_PREFIX = "/~skalkste"; // fel server
-    //public static $DEPLOY_PREFIX = ""; // clear server
+    //public static $DEPLOY_PREFIX = "/~skalkste"; // fel server
+    public static $DEPLOY_PREFIX = ""; // clear server
 
 
     // --- Routers ---
