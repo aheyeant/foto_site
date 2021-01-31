@@ -174,12 +174,13 @@ body {
         text-align: center;
         width: 60%;
         padding-right: 20px;
-        margin: 5px 18%;
+        margin: 15px 18%;
     }
 
     .post-layout .post-image {
         height: 200px;
         width: 200px;
+        padding: 10px;
     }
 
     .post-layout .item {
